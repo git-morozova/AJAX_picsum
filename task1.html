@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>    
+<script>
+const parser = new DOMParser();
+
+const xmlString = `
+ <list>
+    <student>
+        <name lang="en">
+            <first>Ivan</first>
+            <second>Ivanov</second>
+        </name>
+        <age>35</age>
+        <prof>teacher</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Петр</first>
+            <second>Петров</second>
+        </name>
+        <age>58</age>
+        <prof>driver</prof>
+    </student>
+    <student>
+        <name lang="en">
+            <first>John</first>
+            <second>Doe</second>
+        </name>
+        <age>40</age>
+        <prof>engineer</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Анна</first>
+            <second>Смирнова</second>
+        </name>
+        <age>32</age>
+        <prof>doctor</prof>
+    </student>
+    <student>
+        <name lang="en">
+            <first>Sarah</first>
+            <second>Johnson</second>
+        </name>
+        <age>45</age>
+        <prof>lawyer</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Михаил</first>
+            <second>Иванов</second>
+        </name>
+        <age>50</age>
+        <prof>manager</prof>
+    </student>
+    <student>
+        <name lang="en">
+            <first>Emily</first>
+            <second>Williams</second>
+        </name>
+        <age>28</age>
+        <prof>architect</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Екатерина</first>
+            <second>Павлова</second>
+        </name>
+        <age>37</age>
+        <prof>accountant</prof>
+    </student>
+    <student>
+        <name lang="en">
+            <first>Michael</first>
+            <second>Brown</second>
+        </name>
+        <age>48</age>
+        <prof>scientist</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Дмитрий</first>
+            <second>Кузнецов</second>
+        </name>
+        <age>42</age>
+        <prof>musician</prof>
+    </student>
+    <student>
+        <name lang="en">
+            <first>Lisa</first>
+            <second>Miller</second>
+        </name>
+        <age>30</age>
+        <prof>artist</prof>
+    </student>
+    <student>
+        <name lang="ru">
+            <first>Ольга</first>
+            <second>Алексеева</second>
+        </name>
+        <age>25</age>
+        <prof>designer</prof>
+    </student>
+</list>
+`;
+
+// парсинг
+const xmlDOM = parser.parseFromString(xmlString, "text/xml");
+
+// получаем ноды list и student
+const listNode = xmlDOM.querySelector("list");
+const students = listNode.querySelectorAll("student");
+
+// создаем массив listArr и объект-обертку, чтобы результат получился как в ТЗ
+const listArr = [];
+const obj = {list: listArr};
+
+// перебираем список студентов и получаем DOM-ноды
+students.forEach (student => {
+  let name = student.querySelector("name");
+  let first = name.querySelector("first");
+  let second = name.querySelector("second");
+  let age = student.querySelector("age");
+  let prof = student.querySelector("prof");
+  let nameAttr = name.getAttribute('lang');
+  
+// каждого студента записываем в свой объект
+  let result = {
+    name: first.textContent + " " + second.textContent,
+    age: Number(age.textContent),
+    prof: prof.textContent, 
+    lang: nameAttr,
+  };
+  
+// добавляем каждый получившийся объект в конец массива listArr
+listArr.push(result); 
+}); 
+
+console.log(obj);  
+</script>
+</body>
+</html>
