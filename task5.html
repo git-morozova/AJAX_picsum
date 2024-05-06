@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>    
+  <style>
+    .btn {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: none;
+      cursor: pointer;      
+      margin: 5px 10px;
+      padding: 10px 15px;
+      border-radius: 1px;
+      font-size: 12px;
+      line-height: 15px;
+      text-transform: uppercase;
+      color: white;
+      background: #315efb;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      box-shadow: 0px 2px 8px 2px rgba(141,150,178,.3);
+      transform: scale(1.05);
+    }
+    .display-none {
+      display: none;
+    }
+    .error {
+      color:red;
+      display: block;
+    }
+    .completed {
+      color:grey;
+      text-decoration: line-through;
+    }
+  </style>
+
+  <h1>ToDoList</h1>
+  <p>Пожалуйста, введите id пользователя:</p>
+  <input type="text">
+  <button class="btn j-btn">Получить список задач</button>
+  <p class="display-none" id="errorMsgId">Пользователь с указанным id не найден</p>
+  <p class="display-none" id="errorMsgNull">Поле не должно быть пустым</p>
+
+  <ol>    
+  </ol>
+
+  <script>     
+    const btn = document.querySelector('.j-btn');
+    const inputField = document.querySelector('input'); 
+    const errorMsgId = document.querySelector('#errorMsgId'); 
+    const errorMsgNull = document.querySelector('#errorMsgNull'); 
+    const list = document.querySelector('ol');
+
+    btn.addEventListener('click', () => {
+      //убираем старые сообщения об ошибке
+      errorMsgId.classList = 'display-none';
+      errorMsgNull.classList = 'display-none';
+
+      if (!inputField.value) {  //проверка на пустое поле  
+        errorMsgNull.classList = 'error';      
+      } else {
+
+      const fetchUrl = `https://jsonplaceholder.typicode.com/users/` + inputField.value + `/todos`;  
+      
+      //убираем старый список
+      list.innerHTML = '';
+
+      fetch(fetchUrl)
+        .then((response) => {
+          return response.json();  
+        })
+        .then((data) => {
+          if (data.length !== 0) {
+
+            data.forEach(function(obj) {  //перебор объектов в массиве data и вывод данных в html
+              const li = document.createElement("li"); 
+              const liText = document.createTextNode(obj.title);
+              li.appendChild(liText); 
+              list.appendChild(li);
+
+              if(obj.completed){  //проверка задачи на "completed"
+                li.classList = 'completed';
+              }
+            });
+
+            return data;    
+          } else {
+            return Promise.reject();
+          }
+        })
+        .catch(() => { errorMsgId.classList = 'error' }); //проверка на id
+      }      
+    });  
+
+  </script>
+</body>
+</html>
