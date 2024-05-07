@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body>    
+  <style>    
+  body {font-family: Open Sans, sans-serif;}
+  .container { width: 100%; display: flex; flex-wrap: nowrap; margin-left: auto; margin-right: auto;}
+  .brand-icon { display: inline; margin-right: 10px; position: relative; top: 7px; vertical-align: unset; width: 42px; box-shadow: none }
+  h1 { display: inline-block; font-size: 42px; font-weight: 600; margin: 0;}
+  h2 { font-weight: 300; margin-top: 0.5em;margin-bottom: 2em;}
+  .pt-4 { padding: 1rem;}
+  .px-4 { padding: 1rem;  margin-top: 25px;}
+  img { border-radius: 8px; box-shadow: 0 13px 27px -5px #32325d40, 0 8px 16px -8px #0000004d, 0 -6px 16px -6px #00000008; height: auto; max-width: 100%;}
+  .btn { padding: 0; background-color: transparent; border: none; outline: none;
+      -webkit-tap-highlight-color: transparent; box-shadow: none; cursor: pointer; margin: 25px 0px;
+      padding: 10px 15px; border-radius: 1px; font-size: 12px; line-height: 15px; text-transform: uppercase;
+      color: white; background: #315efb; transition: 0.3s; display:block}
+  .btn:hover { box-shadow: 0px 2px 8px 2px rgba(141,150,178,.3); transform: scale(1.05); }
+  .display-none { display: none; }
+  .error { color:red; display: block; }
+  .completed { color:grey; text-decoration: line-through; }
+  ol {list-style: none;padding-inline-start: 0px;display: flex; flex-wrap: wrap;gap: 30px;}
+  li > img { max-width: 441px; width: 100%;}
+  </style>
+
+  <div class="container">
+    <div class="px-4">
+      <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMUExQTFBIiB4bWxuczp4PSJodHRwOi8vbnMuYWRvYmUuY29tL0V4dGVuc2liaWxpdHkvMS4wLyIgeG1sbnM6aT0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZUlsbHVzdHJhdG9yLzEwLjAvIiB4bWxuczpncmFwaD0iaHR0cDovL25zLmFkb2JlLmNvbS9HcmFwaHMvMS4wLyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEwMCAxMDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj48c3dpdGNoPjxmb3JlaWduT2JqZWN0IHJlcXVpcmVkRXh0ZW5zaW9ucz0iaHR0cDovL25zLmFkb2JlLmNvbS9BZG9iZUlsbHVzdHJhdG9yLzEwLjAvIiB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIj48L2ZvcmVpZ25PYmplY3Q+PGcgaTpleHRyYW5lb3VzPSJzZWxmIj48Zz48cGF0aCBkPSJNODYuNSwyOC42aC04LjFsLTEtNy4xYy0wLjQtMi45LTEuOS01LjUtNC4yLTcuM2MtMi4zLTEuOC01LjItMi41LTguMS0yLjFMMTIsMTkuNWMtNiwwLjgtMTAuMiw2LjQtOS40LDEyLjRsNSwzNyAgICAgYzAuOCw1LjUsNS41LDkuNSwxMC45LDkuNWMwLjUsMCwxLDAsMS41LTAuMWwyLjEtMC4zYzAuNSw1LjYsNS4yLDEwLDEwLjksMTBoNTMuNmM2LDAsMTEtNC45LDExLTExVjM5LjYgICAgIEM5Ny41LDMzLjYsOTIuNiwyOC42LDg2LjUsMjguNnogTTkxLjUsMzkuNlY3MUw3NS43LDUyLjljLTIuNi0zLTcuNC0zLTEwLDBMNTIuMSw2OC41bC00LjktNS40Yy0yLjUtMi43LTYuOC0yLjctOS4yLDBMMjgsNzQgICAgIFYzOS42YzAtMi43LDIuMi01LDUtNWg1My42Qzg5LjMsMzQuNiw5MS41LDM2LjksOTEuNSwzOS42eiBNMjIsMzkuNnYzMi4ybC0yLjgsMC40Yy0yLjcsMC40LTUuMi0xLjUtNS42LTQuM0w4LjUsMzEgICAgIGMtMC40LTIuNywxLjUtNS4yLDQuMy01LjZsNTMuMS03LjNjMC4yLDAsMC41LDAsMC43LDBjMi40LDAsNC42LDEuOCw0LjksNC4zbDAuOSw2LjNIMzNDMjYuOSwyOC42LDIyLDMzLjYsMjIsMzkuNnoiPjwvcGF0aD48Y2lyY2xlIGN4PSI0Mi41IiBjeT0iNDcuOCIgcj0iNiI+PC9jaXJjbGU+PC9nPjwvZz48L3N3aXRjaD48L3N2Zz4=" class="brand-icon">
+      <h1>Lorem Picsum</h1>
+      <h2>The Lorem Ipsum for photos.</h2>
+      <p>номер страницы (1-10):</p>
+      <input value="2" type="number" id="inputPage">
+      <p>лимит (1-10):</p>
+      <input value="10" type="number" id="inputLimit">
+      <button class="btn">запрос</button>
+      <p class="display-none" id="errorPage">Номер страницы вне диапазона от 1 до 10</p>
+      <p class="display-none" id="errorLimit">Лимит вне диапазона от 1 до 10</p>      
+      <p class="display-none" id="errorPageAndLimit">Номер страницы и лимит вне диапазона от 1 до 10</p>      
+      <p class="display-none" id="errorVPN">Пожалуйста, включите VPN :)</p>
+    </div>
+    <div class="px-4 pt-4" style="height: 354px;">
+      <img class="resize" src="https://fastly.picsum.photos/id/982/536/354.jpg?hmac=xXo1bhVRPwA6K0ttkJqSEghDCDNd7xWKfKpE5kqXlQo">
+    </div>   
+  </div>
+  <div class="container">
+    <div class="px-4">
+      <ol>  
+      </ol>
+    </div>
+  </div> 
+
+  <script>     
+    const btn = document.querySelector('.btn');
+    const list = document.querySelector('ol');      
+
+    //обработчик кнопки
+    btn.addEventListener('click', async () => {
+
+      //убираем старые сообщения об ошибке
+      errorPage.classList = errorLimit.classList = errorPageAndLimit.classList = errorVPN.classList = 'display-none';
+      
+      //убираем старый список
+      list.innerHTML = '';
+
+      //округляем до input-ы до целых
+      const page = inputPage.value = Math.round (inputPage.value);
+      const limit = inputLimit.value = Math.round (inputLimit.value);
+
+      //проверки input-ов
+      if (!(0 < page && page < 11) && !(0 < limit && limit < 11)) {    
+        errorPageAndLimit.classList = 'error' 
+      } else if (!(0 < page && page < 11)) {
+        errorPage.classList = 'error'      
+      } else if (!(0 < limit && limit < 11)) {
+        errorLimit.classList = 'error'
+      } else {
+
+      const fetchUrl = `https://picsum.photos/v2/list?page=` + page + `&limit=` + limit;  
+          
+      await fetch(fetchUrl)
+        .then((response) => {
+          return response.json();  
+        })
+        .then((data) => {     
+          data.forEach(function(obj) {  //перебор объектов в массиве data и вывод данных в html
+            const li = document.createElement("li"); 
+            const br = document.createElement("br");
+            const liAuthor = document.createTextNode(`Автор: ` + obj.author);
+            const img = document.createElement("img");
+            img.src = obj.download_url;            
+
+            li.appendChild(img);            
+            li.append(br);
+            li.appendChild(liAuthor);         
+            list.appendChild(li);
+
+             // обновляем page и limit в localStorage
+            localStorage.setItem('page', page);            
+            localStorage.setItem('limit', limit);
+          });
+
+        })
+        .catch(() => { errorVPN.classList = 'error' }); 
+      }      
+    }); 
+    
+    // проверяем, есть ли данные в localStorage
+    if (localStorage.getItem('page')) {
+      inputPage.value = localStorage.getItem('page');
+      inputLimit.value = localStorage.getItem('limit');
+      btn.click();
+    }  
+
+  </script>
+</body>
+</html>
